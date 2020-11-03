@@ -23,18 +23,18 @@ Print a message:
 """
 
 def numberofRecords(texts, calls):
-    recordCount = 0
+    recordCount = set()
     for item in texts:
         for element in item:
             if isTelephoneNumber(element):
-                recordCount += 1
+                recordCount.add(element)
 
     for item in calls:
         for element in item:
             if isTelephoneNumber(element):
-                recordCount += 1
-    records = str(recordCount)
-    print("There are " + records + " different telephone numbers in the records.")
+                recordCount.add(element)
+    records = len(recordCount)
+    print("There are " + str(records) + " different telephone numbers in the records.")
     return recordCount
 
 

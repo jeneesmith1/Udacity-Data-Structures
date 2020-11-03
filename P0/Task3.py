@@ -104,7 +104,7 @@ def getAreaCodesCalledByBangalore(numbers):
   areaCodes = []
   for number in range(callRange[0], callRange[1]):
     areaCodes = getFullListAreaCodes(callRange[0], callRange[1], numbers)
-  return areaCodes
+  return sorted(areaCodes)
 
 
 def printCallsbyBangalore(areaCodes):

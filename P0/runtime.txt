@@ -35,7 +35,7 @@ from people in Bangalore.
 
 For this function, I used a recursive binary search to find the Bangalorean numbers. 
 
-The complexity of this is O(logN), since there is an upfront cost to sort and format the phone records before
+The complexity of this is O(NlogN), since there is an upfront cost to sort and format the phone records before
 beginning the search process. Because the search uses a divide and conquer approach, it divides the list
 in half which makes this very efficient. 
 

@@ -27,3 +27,26 @@ For Task 2, I identified the phone record with the longest duration.
 My solution for this is O(n) since my code will run longer in a linear fashion (3x slower) as there
 are three additional lines that would need to be processed and run with an additional item
 added to the dataset. 
+
+## Task 3
+
+For Task 3, we were asked to find phone records and to calculate a percentage of calls called by records
+from people in Bangalore. 
+
+For this function, I used a recursive binary search to find the Bangalorean numbers. 
+
+The complexity of this is O(NlogN), since there is an upfront cost to sort and format the phone records before
+beginning the search process. Because the search uses a divide and conquer approach, it divides the list
+in half which makes this very efficient. 
+
+I initially tried an iterative approach to this problem, and it was slower to run than the recursive one. 
+
+## Task 4
+
+I worked with sets to find the similar and different numbers between different phone lists. 
+
+
+I used sets to do unions and find differences. Becuase these data structures prevent duplicates,
+union finds have O(n) runtime, and in some languages (not Python though), they are also ordered which
+would make finds even more efficient. The complexity of this was still O(n) since the size of my dataset 
+would grow linearly as more items were added. 
