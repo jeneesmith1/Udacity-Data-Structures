@@ -12,8 +12,12 @@ def main():
     with open('calls.csv', 'r') as f:
         reader = csv.reader(f)
         calls = list(reader)
-    numberofRecords(texts, calls)
-    #countNumbers(texts, calls)
+    sentMessages = textSenderSet(texts)
+    receivedMessages = textReceivedSet(texts)
+    incomingMessages = incomingCallSet(calls)
+    sendingSet = sendingNumbers(calls)
+    unionSet = unionRegularNumbers(sentMessages, receivedMessages, incomingMessages, sendingSet)
+    print("There are " + str(unionSet) + " different telephone numbers in the records.")
 
 """
 TASK 1:
@@ -22,72 +26,42 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
-def numberofRecords(texts, calls):
-    recordCount = set()
-    for item in texts:
-        for element in item:
-            if isTelephoneNumber(element):
-                recordCount.add(element)
 
-    for item in calls:
-        for element in item:
-            if isTelephoneNumber(element):
-                recordCount.add(element)
-    records = len(recordCount)
-    print("There are " + str(records) + " different telephone numbers in the records.")
-    return recordCount
+def textSenderSet(texts):
+    sentTexts = set()
+    for text in texts:
+        sentTexts.add(text[0])
+    return sentTexts
+
+def textReceivedSet(texts):
+    receivedTexts = set()
+    for text in texts:
+        receivedTexts.add(text[1])
+    return receivedTexts
+
+def incomingCallSet(calls):
+    incomingCalls = set()
+    for call in calls:
+        incomingCalls.add(formatFixedNumber(call[1]))
+    return incomingCalls
 
 
-def isTelephoneNumber(number):
-    stringify = str(number)
-    if isMobileNumber(stringify) or isFixedNumber(stringify) or isTeleMarketerNumber(stringify):
-        return True
-    else:            
-        return False
+def sendingNumbers(calls):
+    sendingNumbers = set()
+    for call in calls:
+        sendingNumbers.add(formatFixedNumber(call[0]))
+    return sendingNumbers
 
-def numberLength(stringify):
-    if len(stringify) == 10 or len(stringify) == 11:
-        return True
-    else:
-        return False
 
-def isFixedNumber(number):
-    if number.find("(") == 0:
-        if number.find(")") == 4:
-            number = number.replace("(", "", 1)
-            number = number.replace(")", "", 1)
-            if numberLength(number):
-                return True
-    
-    return False
+def unionRegularNumbers(sendingTexts, receivingTexts, incomingCalls, sendingNumbers):
+    regularNumbers = set()
+    regularNumbers = sendingTexts.union(receivingTexts, incomingCalls, sendingNumbers)
+    return len(regularNumbers)
 
-def isMobileNumber(number):
-    mobilePrefixes = ['7', '8', '9']
-    firstNumber = number[0:1]
-    if firstNumber in mobilePrefixes:
-        if numberLength(number):
-            return True
-    else:
-        return False
-
-def isTeleMarketerNumber(number):
-    if number.startswith("140"):
-        if numberLength(number):
-            return True
-    else:
-        return False
-
-def countAllRecords(texts, calls):
-    allRecords = 0
-    for item in texts:
-        for element in item:
-            allRecords += 1
-    
-    for item in calls:
-        for element in item:
-            allRecords += 1
-    
-    return allRecords
+def formatFixedNumber(number):
+  newNumber = number.replace("(", "", 1)
+  newNumber = newNumber.replace(")", "", 1)
+  return newNumber
 
 
 if __name__ == "__main__":
