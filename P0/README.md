@@ -28,6 +28,9 @@ My solution for this is O(n) since my code will run longer in a linear fashion (
 are three additional lines that would need to be processed and run with an additional item
 added to the dataset. 
 
+In this case, I needed to use Python's sorted algorithm, which uses timsort,
+and has O(NlogN). I think the worst-case complexity of this would be O(n) for large datasets, and O(nlogN) for smaller ones since the O(n) runtime of my dataset would grow linearly as more items were added, but the O(nlogn) would grow pseduo-linearly and eventually be more efficient.
+
 ## Task 3
 
 For Task 3, we were asked to find phone records and to calculate a percentage of calls called by records
@@ -46,7 +49,7 @@ I initially tried an iterative approach to this problem, and it was slower to ru
 I worked with sets to find the similar and different numbers between different phone lists. 
 
 
-I used sets to do unions and find differences. Becuase these data structures prevent duplicates,
+I used sets to do unions and find differences. Because these data structures prevent duplicates,
 union finds have O(n) runtime in some languages (not Python though), they are also ordered which
 would make finds even more efficient. In this case, I needed to use Python's sorted algorithm, which uses timsort,
 and has O(NlogN). I think the worst-case complexity of this would be O(n) for large datasets, and O(nlogN) for smaller ones since the O(n) runtime of my dataset would grow linearly as more items were added, but the O(nlogn) would grow pseduo-linearly and eventually be more efficient.

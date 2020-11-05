@@ -28,6 +28,9 @@ My solution for this is O(n) since my code will run longer in a linear fashion (
 are three additional lines that would need to be processed and run with an additional item
 added to the dataset. 
 
+I also needed to use Python's sorted algorithm to get the phone numbers in the proper order, which uses timsort,
+and has O(NlogN). I think the worst-case complexity of this would be O(n) for large datasets, and O(nlogN) for smaller ones since the O(n) runtime of my dataset would grow linearly as more items were added, but the O(nlogn) would grow pseduo-linearly and eventually be more efficient.
+
 ## Task 3
 
 For Task 3, we were asked to find phone records and to calculate a percentage of calls called by records

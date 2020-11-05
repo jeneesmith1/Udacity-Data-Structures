@@ -42,19 +42,6 @@ def findMaxItem(callDurations):
     callDurationLength = len(sorted_x) - 1
     print(sorted_x[callDurationLength][0] + " spent the longest time, " + str(sorted_x[callDurationLength][1]) + " seconds, on the phone during September 2016.")
 
-def longestCall(texts, calls):
-    maxDuration = 0
-    maxIndex = 0
-    for item in range(0, len(calls)):
-        if int(calls[item][3]) > maxDuration:
-            maxDuration = int(calls[item][3])
-            maxIndex = item
-    print(calls[maxIndex][0] + " spent the longest time, " + str(maxDuration) + " seconds, on the phone during September 2016.")
-        
-
-
-
-
 if __name__ == "__main__":
     main()
 
