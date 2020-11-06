@@ -12,11 +12,7 @@ def main():
     with open('calls.csv', 'r') as f:
         reader = csv.reader(f)
         calls = list(reader)
-    sentMessages = textSenderSet(texts)
-    receivedMessages = textReceivedSet(texts)
-    incomingMessages = incomingCallSet(calls)
-    sendingSet = sendingNumbers(calls)
-    unionSet = unionRegularNumbers(sentMessages, receivedMessages, incomingMessages, sendingSet)
+    unionSet = getNumbers(calls, texts)
     print("There are " + str(unionSet) + " different telephone numbers in the records.")
 
 """
@@ -26,43 +22,15 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
-
-def textSenderSet(texts):
-    sentTexts = set()
-    for text in texts:
-        sentTexts.add(text[0])
-    return sentTexts
-
-def textReceivedSet(texts):
-    receivedTexts = set()
-    for text in texts:
-        receivedTexts.add(text[1])
-    return receivedTexts
-
-def incomingCallSet(calls):
-    incomingCalls = set()
-    for call in calls:
-        incomingCalls.add(formatFixedNumber(call[1]))
-    return incomingCalls
-
-
-def sendingNumbers(calls):
-    sendingNumbers = set()
-    for call in calls:
-        sendingNumbers.add(formatFixedNumber(call[0]))
-    return sendingNumbers
-
-
-def unionRegularNumbers(sendingTexts, receivingTexts, incomingCalls, sendingNumbers):
-    regularNumbers = set()
-    regularNumbers = sendingTexts.union(receivingTexts, incomingCalls, sendingNumbers)
-    return len(regularNumbers)
-
-def formatFixedNumber(number):
-  newNumber = number.replace("(", "", 1)
-  newNumber = newNumber.replace(")", "", 1)
-  return newNumber
-
+def getNumbers(texts, calls):
+    uniqueNumbers = set()
+    for item in texts:
+        uniqueNumbers.add(item[0])
+        uniqueNumbers.add(item[1])
+    for item in calls:
+        uniqueNumbers.add(item[0])
+        uniqueNumbers.add(item[1])
+    return len(uniqueNumbers)
 
 if __name__ == "__main__":
     main()

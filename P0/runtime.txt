@@ -9,16 +9,13 @@ most is my len() function call, which would grow linearly as items are added to 
 
 ## Task 1 
 
-For Task 1, I used multiple nested for loops to identify different telephone
-numbers in the phone records and to check for certain conditions. 
+For Task 1, I used two for loops to add the unique numbers to their respective sets. 
 
-The efficiency/Big O for this is 0(n^2), which isn't ideal. 
+The worst-case complexity for this algorithm would be O(n) because of the for loops and adding elements with a set. 
+The reason for that is that since sets have no duplicates, adding a new element to a set requires a 
+check to see if the element is already contained within the set.
 
-While working on this task, I considered several different ways to correctly identify a
-phone number based on different criteria -- we were given several different parameters to consider,
-such as mobile numbers, telemarketer numbers, and landlines. 
-
-I found this task challenging as I practiced clarifying requirements and decomposing the function.
+This will grow proportionally as new items are added to the set. 
 
 ## Task 2 
 
